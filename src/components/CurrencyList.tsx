@@ -3,6 +3,7 @@ import { FlatList, View, Text, StyleSheet, RefreshControl } from 'react-native';
 import { CurrencyItem } from './CurrencyItem';
 import { CurrencySkeleton } from './CurrencySkeleton';
 import { useCurrencyData } from '../hooks/useCurrencyData';
+import { CurrencyConverter } from './CurrencyConverter';
 
 export const CurrencyList: React.FC = () => {
   const { data, isLoading, isError, error, refetch, isRefetching } = useCurrencyData();
@@ -33,6 +34,7 @@ export const CurrencyList: React.FC = () => {
           <View style={styles.listHeader}>
             <Text style={styles.listHeaderText}>Currency Exchange Rates</Text>
             <Text style={styles.listSubHeaderText}>Czech National Bank</Text>
+            <CurrencyConverter rates={data?.rates || []} />
           </View>
         }
       />
